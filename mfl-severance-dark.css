@@ -1,0 +1,82 @@
+
+/* ===============================================================
+   MyFantasyLeague "Severance Darker" Theme
+   Darker variant with improved font legibility
+   Save this file as: mfl-severance-dark.css
+   =============================================================== */
+
+:root{
+  --lumon-green: #009966;     /* darker green accent */
+  --lumon-green-2: #00b37a;
+  --ink-900: #050606;         /* deep black background */
+  --ink-800: #0a0c0c;
+  --ink-700: #111414;
+  --ink-600: #181c1c;
+  --ink-500: #222828;
+  --ink-400: #2e3535;
+  --ink-300: #4a5252;
+  --ink-200: #707a7a;
+  --ink-150: #98a2a2;
+  --ink-100: #bfc8c8;
+  --paper:    #f0f3f2;        /* brighter white text */
+  --paper-2:  #e2e6e5;
+  --glow:     rgba(0, 153, 102, 0.25);
+  --focus:    0 0 0 2px var(--ink-900), 0 0 0 4px var(--lumon-green);
+  --radius:   6px;
+  --radius-sm:4px;
+  --shadow-1: 0 1px 1px rgba(0,0,0,.3);
+  --shadow-2: 0 8px 24px rgba(0,0,0,.45);
+  --transition: 140ms ease;
+}
+
+/* Global text */
+html, body {
+  margin:0;
+  padding:0;
+  background: linear-gradient(180deg, var(--ink-900), var(--ink-800));
+  color: var(--paper);
+  font: 16px/1.6 "Segoe UI", Inter, system-ui, sans-serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--lumon-green); font-weight: 500; }
+a:hover, a:focus { color: var(--lumon-green-2); }
+
+/* Headers */
+h1,h2,h3,h4,h5,h6 {
+  color: var(--paper);
+  font-weight: 600;
+  letter-spacing: .02em;
+}
+
+/* Navigation */
+#navigation a, #menu a, nav.primary a {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* Table text */
+th, thead th {
+  font-size: 12.5px;
+}
+td {
+  font-size: 14px;
+  color: var(--paper-2);
+}
+
+/* Scoreboard font adjustments */
+.score .points, .matchup .points {
+  font: 700 28px/1.2 ui-monospace, Consolas, monospace;
+  color: var(--paper);
+}
+
+/* Player info */
+.player .name, .playerName { font-weight:600; font-size: 15px; color: var(--paper); }
+.player .team, .playerTeam { font-size: 13px; color: var(--ink-150); }
+
+/* Buttons */
+button, input[type="submit"], .btn, .button {
+  font-size: 13px;
+  font-weight: 600;
+}
