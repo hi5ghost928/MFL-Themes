@@ -1,0 +1,106 @@
+
+/* ===============================================================
+   MyFantasyLeague "Severance Dark Refined" Theme
+   Dark themed with improved readability and contrast
+   Save this file as: mfl-severance-dark-refined.css
+   =============================================================== */
+
+:root{
+  --lumon-green: #009966;     /* dark green accent */
+  --lumon-green-2: #00b37a;
+  --ink-900: #030404;         /* deep black background */
+  --ink-800: #080a0a;
+  --ink-700: #101212;
+  --ink-600: #171b1b;
+  --ink-500: #202525;
+  --ink-400: #2c3232;
+  --ink-300: #464e4e;
+  --ink-200: #6a7373;
+  --ink-150: #929c9c;
+  --ink-100: #bcc6c6;
+  --paper:    #e8ebea;        /* text color on dark bg */
+  --paper-2:  #dfe3e2;
+  --ink-light-text: #1a1d1d;  /* darker text for light backgrounds */
+  --glow:     rgba(0, 153, 102, 0.3);
+  --focus:    0 0 0 2px var(--ink-900), 0 0 0 4px var(--lumon-green);
+  --radius:   6px;
+  --radius-sm:4px;
+  --shadow-1: 0 1px 1px rgba(0,0,0,.35);
+  --shadow-2: 0 8px 24px rgba(0,0,0,.5);
+  --transition: 150ms ease;
+}
+
+/* Global text */
+html, body {
+  margin:0;
+  padding:0;
+  background: linear-gradient(180deg, var(--ink-900), var(--ink-800));
+  color: var(--paper);
+  font: 14px/1.6 "Segoe UI", Inter, system-ui, sans-serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Links */
+a { color: var(--lumon-green); font-weight: 500; }
+a:hover, a:focus { color: var(--lumon-green-2); }
+
+/* Headers */
+h1,h2,h3,h4,h5,h6 {
+  color: var(--paper);
+  font-weight: 600;
+  letter-spacing: .02em;
+}
+
+/* Navigation */
+#navigation a, #menu a, nav.primary a {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* Modules / Cards */
+.module, .report, .card {
+  color: var(--paper);
+}
+.module-content, .card-content {
+  color: var(--paper);
+}
+
+/* Tables */
+table, th, td {
+  font-size: 14px;
+}
+th, thead th {
+  color: var(--paper);
+  background: linear-gradient(180deg, var(--ink-700), var(--ink-800));
+}
+td {
+  color: var(--paper-2);
+}
+
+/* Light backgrounds (like zebra striping, highlights) use dark text */
+tr:nth-child(odd) td { 
+  background: rgba(255,255,255,.04);
+  color: var(--paper);
+}
+tr.highlight td, tr.selected td {
+  background: var(--paper);
+  color: var(--ink-light-text);  /* dark text for light background */
+}
+
+/* Scoreboard */
+.score .points, .matchup .points {
+  font: 700 24px/1.2 ui-monospace, Consolas, monospace;
+  color: var(--paper);
+}
+
+/* Players */
+.player .name, .playerName { font-weight:600; font-size: 14px; color: var(--paper); }
+.player .team, .playerTeam { font-size: 13px; color: var(--ink-150); }
+
+/* Buttons */
+button, input[type="submit"], .btn, .button {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: .03em;
+}
