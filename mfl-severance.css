@@ -1,0 +1,372 @@
+
+/* ===============================================================
+   MyFantasyLeague "Severance" Theme
+   A stark, minimalist skin inspired by the show "Severance".
+   Save this file as: mfl-severance.css
+   Last updated: 2025-08-22
+   =============================================================== */
+
+/* ---------- Root tokens ---------- */
+:root{
+  --lumon-green: #00b37a;     /* restrained mint/green accent */
+  --lumon-green-2: #19c796;
+  --ink-900: #0b0e0d;         /* near-black background */
+  --ink-800: #111414;
+  --ink-700: #171a1a;
+  --ink-600: #1f2423;
+  --ink-500: #2a2f2e;
+  --ink-400: #394140;
+  --ink-300: #5a6462;
+  --ink-200: #86918f;
+  --ink-150: #a5afad;
+  --ink-100: #c7cfcd;
+  --paper:    #eef2f1;        /* off-white */
+  --paper-2:  #e6ecea;
+  --glow:     rgba(0, 179, 122, 0.25);
+  --focus:    0 0 0 2px var(--ink-900), 0 0 0 4px var(--lumon-green);
+  --radius:   6px;            /* very light rounding to avoid jaggies */
+  --radius-sm:4px;
+  --shadow-1: 0 1px 1px rgba(0,0,0,.25);
+  --shadow-2: 0 8px 24px rgba(0,0,0,.35);
+  --transition: 140ms ease;
+}
+
+/* ---------- Global reset ---------- */
+html, body {
+  margin:0;
+  padding:0;
+  background: radial-gradient(1200px 800px at 50% -10%, rgba(0,179,122,.06), transparent 60%),
+              linear-gradient(180deg, var(--ink-900), var(--ink-800));
+  color: var(--paper);
+  font: 15px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, Inter, system-ui, sans-serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Subtle scanline film vibe */
+body::after{
+  content:"";
+  pointer-events:none;
+  position:fixed; inset:0;
+  background-image: linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px);
+  background-size: 100% 3px;
+  mix-blend-mode: soft-light;
+  opacity:.25;
+}
+
+/* Links */
+a { color: var(--lumon-green); text-decoration: none; }
+a:hover, a:focus { color: var(--lumon-green-2); text-decoration: underline; }
+a:focus { outline:none; box-shadow: var(--focus); border-radius: var(--radius-sm); }
+
+/* ---------- Layout scaffolding (common MFL ids/classes) ---------- */
+#pageheader, #header, header {
+  background: linear-gradient(180deg, var(--ink-800), var(--ink-900));
+  border-bottom: 1px solid var(--ink-500);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: var(--shadow-1);
+}
+
+#pageheader .logo, #header .logo, .site-logo {
+  filter: grayscale(100%) contrast(110%) brightness(90%);
+  mix-blend-mode: screen;
+}
+
+/* Titlebar */
+#league, .league-name, #header h1, #pageheader h1{
+  margin:0;
+  padding: 14px 20px;
+  font-weight: 600;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--paper);
+}
+
+/* Navigation */
+#navigation, #menu, nav.primary {
+  display:flex; gap:8px; flex-wrap:wrap;
+  padding: 10px 16px;
+  background: var(--ink-900);
+  border-top: 1px solid var(--ink-600);
+  border-bottom: 1px solid var(--ink-600);
+}
+
+#navigation a, #menu a, nav.primary a {
+  display:inline-flex; align-items:center;
+  padding:8px 12px;
+  color: var(--paper);
+  background: linear-gradient(180deg, var(--ink-700), var(--ink-800));
+  border:1px solid var(--ink-500);
+  border-radius: var(--radius);
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing:.06em;
+  transition: transform var(--transition), background var(--transition), box-shadow var(--transition);
+}
+
+#navigation a:hover, #menu a:hover, nav.primary a:hover {
+  transform: translateY(-1px);
+  background: linear-gradient(180deg, var(--ink-600), var(--ink-700));
+  box-shadow: 0 0 0 1px var(--lumon-green) inset, 0 4px 18px var(--glow);
+}
+
+#navigation a.active, #menu a.active {
+  border-color: var(--lumon-green);
+  box-shadow: 0 0 0 1px var(--lumon-green) inset, 0 0 0 2px rgba(0,179,122,.2);
+}
+
+/* Page container */
+#bodywrap, #content, #bodyWrap, main {
+  max-width: 1200px;
+  margin: 22px auto;
+  padding: 0 16px 40px;
+}
+
+/* ---------- Modules / Cards ---------- */
+.module, .report, .home .module, .module-container, .card {
+  background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0)) padding-box,
+              linear-gradient(180deg, var(--ink-700), var(--ink-800)) border-box;
+  border: 1px solid var(--ink-500);
+  border-radius: var(--radius);
+  padding: 0;
+  margin: 16px 0;
+  box-shadow: var(--shadow-1);
+}
+
+.module-header, .module h3, .module .title, .report h3, .card-header, .section-title {
+  margin:0;
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--ink-500);
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: .08em;
+  color: var(--paper);
+  background: linear-gradient(180deg, var(--ink-700), var(--ink-800));
+}
+
+.module-content, .module .content, .card-content, .report .content {
+  padding: 14px;
+}
+
+/* ---------- Tables (reports, standings, rosters) ---------- */
+table, .report table, table.report, .standings table, .roster, .scoreboard table {
+  width: 100%;
+  border-collapse: collapse;
+  background: transparent;
+}
+
+th, thead th {
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: .08em;
+  text-align: left;
+  padding: 12px 10px;
+  color: var(--paper);
+  border-bottom: 1px solid var(--ink-500);
+  background: linear-gradient(180deg, var(--ink-700), var(--ink-800));
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
+
+td {
+  padding: 10px 10px;
+  border-bottom: 1px solid var(--ink-600);
+  color: var(--paper-2);
+}
+
+/* Zebra striping */
+tr:nth-child(odd) td { background: rgba(255,255,255,.015); }
+tr:hover td { background: rgba(0,179,122,.06); }
+
+/* Numeric alignment */
+td.num, td.points, td.s, td.pf, td.pa, td.w, td.l, td.t { text-align: right; }
+
+/* Status pills */
+.badge, .status, .injury, .bye {
+  display:inline-block;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 11px;
+  letter-spacing: .03em;
+  border: 1px solid var(--ink-500);
+  background: var(--ink-700);
+  color: var(--paper);
+}
+.status--active { border-color: var(--lumon-green); color: var(--lumon-green); }
+.status--out, .injury-OUT { color:#ff6b6b; border-color:#ff6b6b; }
+.status--q, .injury-Q { color:#ffd166; border-color:#ffd166; }
+.status--bye, .bye { color:var(--ink-150); }
+
+/* ---------- Scoreboard ---------- */
+.scoreboard, .weekly-scores, .matchups {
+  display:grid;
+  gap:16px;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+}
+
+.score, .matchup, .game-card {
+  border:1px solid var(--ink-500);
+  border-radius: var(--radius);
+  background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0));
+  padding:12px;
+}
+
+.score .teams, .matchup .teams {
+  display:flex; justify-content:space-between; align-items:center; gap:12px;
+  margin-bottom: 10px;
+}
+
+.score .team, .matchup .team {
+  display:flex; align-items:center; gap:10px;
+  min-width:0;
+}
+
+.score .team .name, .matchup .team .name {
+  font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+
+.score .points, .matchup .points {
+  font: 700 26px/1.1 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  letter-spacing:.02em;
+  color: var(--paper);
+}
+
+.score .meta, .matchup .meta {
+  font-size:12px; color: var(--ink-150);
+  display:flex; justify-content:space-between;
+  border-top:1px dashed var(--ink-500); padding-top:8px; margin-top:8px;
+}
+
+/* Franchise logos -> grayscale */
+.franchiseicon img, .teamlogo img, img.logo {
+  filter: grayscale(100%) contrast(110%);
+  opacity:.9;
+  transition: filter var(--transition), opacity var(--transition), transform var(--transition);
+}
+.franchiseicon img:hover, .teamlogo img:hover, img.logo:hover {
+  filter: grayscale(0%) contrast(115%);
+  opacity:1;
+  transform: scale(1.02);
+}
+
+/* ---------- Forms & Buttons ---------- */
+input[type="text"], input[type="number"], input[type="search"], input[type="email"],
+select, textarea {
+  color: var(--paper);
+  background: var(--ink-800);
+  border:1px solid var(--ink-500);
+  border-radius: var(--radius-sm);
+  padding:8px 10px;
+  transition: border var(--transition), box-shadow var(--transition), background var(--transition);
+}
+
+input:focus, select:focus, textarea:focus {
+  outline:none; box-shadow: var(--focus); border-color: var(--lumon-green);
+}
+
+button, input[type="submit"], .btn, .button {
+  appearance:none;
+  display:inline-flex; align-items:center; justify-content:center;
+  gap:8px;
+  padding:10px 14px;
+  font-weight:600; letter-spacing:.04em; text-transform:uppercase; font-size:12px;
+  color: var(--ink-900);
+  background: linear-gradient(180deg, var(--lumon-green), var(--lumon-green-2));
+  border:1px solid #0a4;
+  border-radius: var(--radius);
+  cursor:pointer;
+  transition: transform var(--transition), box-shadow var(--transition), filter var(--transition);
+}
+button:hover, input[type="submit"]:hover, .btn:hover, .button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px var(--glow);
+}
+button:active, .btn:active { transform: translateY(0); }
+button.secondary, .btn.secondary {
+  background: linear-gradient(180deg, var(--ink-700), var(--ink-800));
+  color: var(--paper);
+  border-color: var(--ink-500);
+}
+/* destructive */
+button.danger, .btn.danger {
+  background: linear-gradient(180deg, #b3261e, #8b1d17);
+  color: #fff;
+  border-color: #ad2a22;
+}
+
+/* ---------- Rosters / Players ---------- */
+.player, .playerRow, .rosterRow {
+  display:flex; gap:10px; align-items:center;
+}
+.player .pos, .playerPos {
+  width: 34px; flex: 0 0 34px;
+  text-align:center;
+  border:1px solid var(--ink-500);
+  background: var(--ink-700);
+  color: var(--paper);
+  padding:6px 0;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  letter-spacing:.02em;
+}
+.player .name, .playerName { font-weight:600; color: var(--paper); }
+.player .team, .playerTeam { color: var(--ink-150); font-size: 12px; }
+.player .bye, .playerBye { margin-left:auto; color: var(--ink-150); }
+
+/* Injured/Out overlay tone */
+tr.injured td { background: linear-gradient(90deg, rgba(179,38,30,.12), transparent); }
+tr.questionable td { background: linear-gradient(90deg, rgba(255,209,102,.12), transparent); }
+
+/* ---------- Transactions / News ---------- */
+.news-item, .transaction, .waiver, .trade {
+  border-left: 2px solid var(--ink-500);
+  padding-left: 10px;
+  margin: 8px 0;
+}
+.news-item--important, .trade { border-left-color: var(--lumon-green); }
+
+/* ---------- Draft Room ---------- */
+.draftTable .onClock, .draft .onClock {
+  box-shadow: inset 0 0 0 1px var(--lumon-green);
+  background: linear-gradient(90deg, rgba(0,179,122,.12), transparent);
+}
+.pickTimer, .timer {
+  font: 700 18px/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  color: var(--lumon-green);
+}
+
+/* ---------- Footer ---------- */
+#footer, footer {
+  margin: 40px 0 20px;
+  color: var(--ink-150);
+  text-align:center;
+}
+
+/* ---------- Utility ---------- */
+.hr, hr { border:0; height:1px; background: linear-gradient(90deg, transparent, var(--ink-600), transparent); margin: 16px 0; }
+
+.muted { color: var(--ink-150); }
+.small { font-size: 12px; }
+
+/* ---------- Mobile tweaks ---------- */
+@media (max-width: 800px){
+  #navigation, #menu, nav.primary { gap:6px; }
+  #navigation a, #menu a, nav.primary a { padding:7px 10px; font-size:11px; }
+  th, thead th { font-size:10px; }
+  td { padding:8px 8px; }
+  .score .points, .matchup .points { font-size:22px; }
+  .player .pos { width:30px; flex-basis:30px; }
+}
+
+/* ---------- Optional: High-contrast mode toggle via attribute ---------- */
+:root[data-contrast="high"]{
+  --paper: #ffffff;
+  --paper-2: #f4f7f6;
+  --ink-600: #2b3332;
+  --ink-500: #3b4443;
+}
+:root[data-contrast="high"] a { text-decoration: underline; }
