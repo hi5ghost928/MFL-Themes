@@ -1,0 +1,158 @@
+/* Severance “Glitchy Corporate Interface” Dark Mode for MyFantasyLeague */
+
+/* --- Import Fonts --- */
+@import url('https://fonts.googleapis.com/css2?family=Forma+DJR:wght@400;700&family=Manifold+Extended+CF:wght@400;700&family=Optima:wght@400;700&display=swap');
+
+/* --- Base Styles --- */
+html {
+    font-size: 12px;
+}
+
+body {
+    font-family: 'Forma DJR', sans-serif;
+    background-color: #0D0D0D; /* Very dark base */
+    background-image:
+        linear-gradient(rgba(0,255,0,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,255,0,0.03) 1px, transparent 1px);
+    background-size: 20px 20px; /* subtle grid lines */
+    color: #EAEAEA;
+    margin: 0;
+    padding: 0;
+}
+
+/* --- Root Colors --- */
+:root {
+    --primary-color: #39FF14; /* Neon green for terminal vibe */
+    --secondary-color: #222222; /* Dark gray for panels */
+    --accent-color: #1A1A1A; /* Slightly lighter dark for cards */
+    --alert-color: #FF3B3B; /* Red for warnings */
+    --text-color: #EAEAEA; /* Off-white */
+    --link-color: #39FF14;
+    --link-hover-color: #A3FF7F;
+}
+
+/* --- Headings --- */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Manifold Extended CF', sans-serif;
+    color: var(--primary-color);
+    margin: 0 0 8px 0;
+    text-shadow: 0 0 2px #39FF14;
+}
+
+h1 { font-size: 1.8em; }
+h2 { font-size: 1.6em; }
+h3 { font-size: 1.4em; }
+h4 { font-size: 1.2em; }
+h5 { font-size: 1.1em; }
+h6 { font-size: 1em; }
+
+/* --- Links --- */
+a {
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--link-hover-color);
+    text-decoration: underline;
+}
+
+/* --- Tables --- */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Forma DJR', sans-serif;
+    font-size: 12px;
+}
+
+th, td {
+    padding: 6px 8px;
+    border: 1px solid #333333;
+    text-align: left;
+}
+
+th {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    text-shadow: 0 0 1px var(--primary-color);
+}
+
+/* --- Buttons --- */
+button, input[type="button"], input[type="submit"] {
+    font-family: 'Optima', sans-serif;
+    font-size: 12px;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    padding: 6px 12px;
+    cursor: pointer;
+    border-radius: 3px;
+    text-shadow: 0 0 1px var(--primary-color);
+    transition: all 0.2s ease;
+}
+
+button:hover, input[type="button"]:hover, input[type="submit"]:hover {
+    background-color: var(--primary-color);
+    color: #0D0D0D;
+    text-shadow: none;
+}
+
+/* --- Icons --- */
+.icon {
+    width: 24px;
+    height: 24px;
+    background-size: contain;
+    display: inline-block;
+}
+
+/* --- Forms --- */
+input, select, textarea {
+    font-family: 'Forma DJR', sans-serif;
+    font-size: 12px;
+    padding: 4px 6px;
+    border: 1px solid var(--primary-color);
+    border-radius: 3px;
+    background-color: var(--accent-color);
+    color: var(--text-color);
+    text-shadow: 0 0 1px #39FF14;
+}
+
+/* --- Severance Style Section Titles --- */
+.severance-title {
+    font-family: 'Manifold Extended CF', sans-serif;
+    font-weight: 700;
+    font-size: 1.3em;
+    color: var(--primary-color);
+    margin-bottom: 6px;
+    border-bottom: 1px solid var(--secondary-color);
+    padding-bottom: 2px;
+    text-shadow: 0 0 2px var(--primary-color);
+}
+
+/* --- Alerts & Notices --- */
+.notice {
+    background-color: var(--alert-color);
+    color: #0D0D0D;
+    padding: 8px;
+    border-left: 4px solid #FF0000;
+    margin: 10px 0;
+    font-weight: bold;
+    text-shadow: 0 0 2px #FF3B3B;
+}
+
+/* --- Footer --- */
+footer {
+    font-family: 'Optima', sans-serif;
+    font-size: 11px;
+    color: #777777;
+    padding: 10px 0;
+    text-align: center;
+    border-top: 1px solid #333333;
+}
+
+/* --- Misc --- */
+hr {
+    border: 0;
+    border-top: 1px solid #333333;
+    margin: 12px 0;
+}
