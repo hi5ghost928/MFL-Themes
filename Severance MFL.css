@@ -1,0 +1,84 @@
+/* MyFantasyLeague — Severance Dark Theme */
+:root {
+  --accent-green: #009966;
+  --accent-green-hover: #00b37a;
+  --bg-darkest: #020303;
+  --bg-darker: #080a0a;
+  --bg-dark: #111313;
+  --bg-mid: #1d2222;
+  --text-light: #e8ebea;
+  --text-light2: #dfe3e2;
+  --text-dark: #1a1d1d;
+  --glow: rgba(0, 153, 102, 0.3);
+  --focus: 0 0 0 2px var(--bg-darkest), 0 0 0 4px var(--accent-green);
+  --radius: 6px;
+  --transition: 150ms ease;
+}
+html, body {
+  background: linear-gradient(180deg, var(--bg-darkest), var(--bg-darker));
+  color: var(--text-light);
+  font: 14px/1.6 "Segoe UI", Inter, system-ui, sans-serif;
+}
+/* Navigation */
+#navigation, #menu, nav.primary {
+  background: var(--bg-dark);
+}
+#navigation a, #menu a, nav.primary a {
+  color: var(--text-light);
+  background: var(--bg-mid);
+  font-size: 14px;
+  font-weight: 600;
+  transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+}
+#navigation a:hover, #menu a:hover, nav.primary a:hover {
+  background: var(--bg-dark);
+  box-shadow: 0 0 0 1px var(--accent-green) inset, 0 4px 16px var(--glow);
+}
+/* Modules & Cards */
+.module, .report, .card {
+  background: var(--bg-dark);
+  border-radius: var(--radius);
+  box-shadow: 0 1px 1px rgba(0,0,0,.35);
+}
+.module-header, .card-header {
+  color: var(--text-light);
+  background: var(--bg-mid);
+}
+/* Tables (Standings, Transactions, etc.) */
+table, th, td {
+  font-size: 14px;
+}
+th {
+  background: var(--bg-mid);
+  color: var(--text-light);
+  position: sticky;
+  top: 0;
+}
+td {
+  color: var(--text-light2);
+}
+tr:nth-child(odd) td {
+  background: rgba(255,255,255,0.04);
+  color: var(--text-light);
+}
+tr.highlight td, tr.selected td {
+  background: var(--text-light);
+  color: var(--text-dark);
+}
+/* Links */
+a { color: var(--accent-green); }
+a:hover, a:focus { color: var(--accent-green-hover); }
+/* Focus outlines */
+:focus { outline: none; box-shadow: var(--focus); }
+/* Buttons */
+button, .btn, input[type="submit"] {
+  font-size: 14px;
+  font-weight: 600;
+  background: var(--accent-green);
+  color: var(--bg-darkest);
+}
+/* Scoreboard & Points */
+.score .points, .matchup .points {
+  font: 700 24px/1.2 ui-monospace, Consolas, monospace;
+  color: var(--text-light);
+}
