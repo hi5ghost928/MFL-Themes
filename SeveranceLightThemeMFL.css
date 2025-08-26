@@ -203,7 +203,7 @@ tbody tr:hover {
    9) Alerts & Badges
    ------------------------------ */
 .alert, .notice, .warning, .success, .info {
-  padding: .75rem 1rem;
+  padding: .75rem .8rem;
   border-radius: var(--radius-md);
   margin: .8rem 0;
 }
@@ -232,3 +232,4 @@ footer, #footer {
   padding: .8rem;
   text-align: center;
 }
+
