@@ -1,0 +1,499 @@
+/* ==========================================================================
+   MyFantasyLeague – "Severance: Sublevel" Theme (Dark)
+   Aesthetic: minimal, clinical, high-contrast neutrals + soft CRT green accents
+   Author: You + ChatGPT
+   Notes:
+   - Designed to be legible and calm for long sessions
+   - Subtle glitch micro-interactions (no motion sickness)
+   - Works without external fonts; uses system stack for speed
+   ========================================================================== */
+
+/* ------------------------------ */
+/* 1) Design Tokens (CSS Variables)
+/* ------------------------------ */
+:root {
+  /* Palette */
+  --bg-0: #0f1113;           /* page background */
+  --bg-1: #15181b;           /* card background */
+  --bg-2: #1b1f23;           /* elevated hover/active */
+  --ink-0: #e7ecef;          /* primary text */
+  --ink-1: #b3bdc6;          /* secondary text */
+  --muted: #7b8894;          /* tertiary */
+  --divider: #262c33;        /* borders */
+  --accent: #9ff2c9;         /* soft CRT green */
+  --accent-strong: #7beab5;  /* hover/active */
+  --accent-ink: #0a1b12;     /* dark text for accent-on-light */
+  --danger: #ff5c70;         /* alerts */
+  --success: #7ee8a5;        /* success */
+  --warning: #ffe08a;        /* warnings */
+  --info: #9ac9ff;           /* info */
+
+  /* Radii & Shadows */
+  --radius-sm: .5rem;
+  --radius-md: .9rem;
+  --radius-lg: 1.2rem;
+  --shadow-1: 0 6px 20px rgba(0,0,0,.35), inset 0 0 0 1px rgba(255,255,255,.02);
+  --shadow-2: 0 8px 30px rgba(0,0,0,.45), inset 0 0 0 1px rgba(255,255,255,.03);
+
+  /* Typography */
+  --font-ui: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", "Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  --size-0: 12px;
+  --size-1: 13px;
+  --size-2: 14px;
+  --size-3: 16px;
+  --size-4: 18px;
+  --size-5: 22px;
+  --line: 1.55;
+
+  /* Layout */
+  --gap-1: .5rem;
+  --gap-2: .8rem;
+  --gap-3: 1.2rem;
+  --gap-4: 1.6rem;
+  --gap-5: 2.2rem;
+
+  /* Focus Ring */
+  --ring: 0 0 0 2px rgba(159,242,201,.35), 0 0 0 6px rgba(159,242,201,.18);
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}
+
+/* ------------------------------ */
+/* 2) Global Resets & Base Type
+/* ------------------------------ */
+html, body {
+  background: var(--bg-0) !important;
+  color: var(--ink-0) !important;
+  font-family: var(--font-ui);
+  font-size: var(--size-3);
+  line-height: var(--line);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover, a:focus { color: var(--accent-strong); text-decoration: underline; }
+
+hr, .divider, .mfl-divider {
+  border: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--divider), transparent);
+  margin: var(--gap-4) 0;
+}
+
+/* Common containers in MFL */
+#siteContent, #body_container, #home, .content, .module, .mfl-widget, .mfl-module, .mfl-card {
+  background: var(--bg-1) !important;
+  color: var(--ink-0) !important;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-1);
+  border: 1px solid var(--divider);
+  overflow: hidden;
+}
+
+/* Main page wrapper (if present) */
+.wrapper, .container, #mfl-wrap {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: var(--gap-4);
+}
+
+/* ------------------------------ */
+/* 3) Top Navigation / Header
+/* ------------------------------ */
+header, .header, #header, #topnav, .navbar, .mfl-menu-bar {
+  background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.0)) , var(--bg-1) !important;
+  border-bottom: 1px solid var(--divider);
+  box-shadow: var(--shadow-1);
+}
+
+header a, .header a, #topnav a, .navbar a {
+  color: var(--ink-0) !important;
+  font-weight: 600;
+  letter-spacing: .02em;
+}
+
+header a:hover, #topnav a:hover, .navbar a:hover {
+  color: var(--accent) !important;
+}
+
+/* Active tab pill */
+.nav .active > a, .tabs .active > a, .mfl-tabs .active > a {
+  background: rgba(159,242,201,.12) !important;
+  color: var(--accent) !important;
+  border-radius: 999px;
+  border: 1px solid rgba(159,242,201,.28);
+}
+
+/* ------------------------------ */
+/* 4) Cards, Modules, Panels
+/* ------------------------------ */
+.card, .panel, .module, .mfl-widget, .mfl-card {
+  background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0)) , var(--bg-1) !important;
+  border: 1px solid var(--divider) !important;
+  border-radius: var(--radius-lg) !important;
+  box-shadow: var(--shadow-1) !important;
+}
+
+.card:hover, .panel:hover, .module:hover, .mfl-card:hover {
+  box-shadow: var(--shadow-2) !important;
+  transform: translateY(-1px);
+  transition: transform .15s ease, box-shadow .2s ease;
+}
+
+.card .title, .panel .title, .module .title, .mfl-card .title, h1, h2, h3 {
+  color: var(--ink-0) !important;
+  font-weight: 700;
+  letter-spacing: .01em;
+}
+
+/* Subtle grid separators */
+.card .content, .panel .content, .module .content {
+  border-top: 1px solid var(--divider);
+}
+
+/* ------------------------------ */
+/* 5) Buttons
+/* ------------------------------ */
+button, .btn, input[type="submit"], input[type="button"], .mfl-button {
+  background: linear-gradient(180deg, rgba(159,242,201,.18), rgba(159,242,201,.08));
+  color: var(--ink-0);
+  border: 1px solid rgba(159,242,201,.35);
+  border-radius: var(--radius-md);
+  padding: .6rem 1rem;
+  font-weight: 600;
+  letter-spacing: .02em;
+  cursor: pointer;
+  transition: transform .06s ease, box-shadow .2s ease, background .2s ease;
+  box-shadow: 0 0 0 0 rgba(159,242,201,0);
+}
+
+button:hover, .btn:hover, input[type="submit"]:hover, input[type="button"]:hover, .mfl-button:hover {
+  background: linear-gradient(180deg, rgba(159,242,201,.28), rgba(159,242,201,.12));
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(0,0,0,.35);
+}
+
+button:active, .btn:active { transform: translateY(0); }
+
+button.secondary, .btn.secondary, .ghost, .btn-ghost {
+  background: transparent;
+  border: 1px solid var(--divider);
+}
+button.secondary:hover { border-color: rgba(159,242,201,.35); }
+
+/* Destructive */
+.btn-danger, .danger, .delete, button.danger {
+  background: linear-gradient(180deg, rgba(255,92,112,.25), rgba(255,92,112,.12));
+  border: 1px solid rgba(255,92,112,.35);
+  color: #ffeef1;
+}
+
+/* ------------------------------ */
+/* 6) Forms & Inputs
+/* ------------------------------ */
+input[type="text"], input[type="email"], input[type="password"], input[type="number"], select, textarea, .mfl-input {
+  background: var(--bg-2) !important;
+  color: var(--ink-0) !important;
+  border: 1px solid var(--divider) !important;
+  border-radius: var(--radius-sm) !important;
+  padding: .55rem .7rem !important;
+  outline: none !important;
+  transition: box-shadow .2s ease, border-color .2s ease;
+}
+
+input::placeholder, textarea::placeholder { color: var(--muted); }
+
+input:focus, select:focus, textarea:focus {
+  border-color: rgba(159,242,201,.5) !important;
+  box-shadow: var(--ring) !important;
+}
+
+/* Toggles/checkboxes (subtle glow) */
+input[type="checkbox"]:focus, input[type="radio"]:focus { box-shadow: var(--ring); }
+
+/* ------------------------------ */
+/* 7) Tables (Standings, Rosters, Schedules)
+/* ------------------------------ */
+table, .table {
+  width: 100%;
+  border-collapse: collapse !important;
+  background: var(--bg-1);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+thead th {
+  background: linear-gradient(180deg, rgba(159,242,201,.08), rgba(159,242,201,0));
+  color: var(--ink-0);
+  border-bottom: 1px solid var(--divider);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: var(--size-2);
+  letter-spacing: .06em;
+}
+
+tbody tr {
+  border-bottom: 1px solid var(--divider);
+}
+tbody tr:nth-child(even) {
+  background: rgba(255,255,255,.01);
+}
+tbody tr:hover {
+  background: rgba(159,242,201,.06);
+}
+
+td, th {
+  padding: .7rem .8rem;
+  text-align: left;
+  color: var(--ink-0);
+}
+
+/* Numeric columns alignment helpers (if MFL uses .num, .right) */
+td.num, td.right { text-align: right; }
+
+/* Highlight leaders/your team rows */
+tr.is-you, tr.leader, tr.highlight {
+  background: linear-gradient(90deg, rgba(159,242,201,.09), rgba(159,242,201,.0)) !important;
+}
+
+/* ------------------------------ */
+/* 8) Scoreboard & Matchups
+/* ------------------------------ */
+.matchup, .scoreboard, .game, .mfl-matchup {
+  background: var(--bg-1);
+  border: 1px solid var(--divider);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-1);
+  overflow: hidden;
+}
+
+.matchup .team, .scoreboard .team {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--gap-2);
+  align-items: center;
+  padding: 1rem 1.2rem;
+}
+
+.matchup .team-name, .scoreboard .team-name {
+  font-size: var(--size-5);
+  font-weight: 700;
+  letter-spacing: .01em;
+}
+
+.matchup .score, .scoreboard .score {
+  font-variant-numeric: tabular-nums;
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--accent);
+  text-shadow: 0 0 10px rgba(159,242,201,.25);
+}
+
+/* Progress/possession/ESPN-like bars if present */
+.progress, .bar, .meter {
+  appearance: none;
+  height: 8px;
+  background: #0e1417;
+  border-radius: 999px;
+  border: 1px solid var(--divider);
+  overflow: hidden;
+}
+.progress > span, .bar > span, .meter > span {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(159,242,201,.15), rgba(159,242,201,.35));
+}
+
+/* ------------------------------ */
+/* 9) Alerts, Badges, Chips
+/* ------------------------------ */
+.alert, .notice, .warning, .success, .info {
+  padding: .75rem 1rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--divider);
+  background: var(--bg-1);
+}
+.alert, .warning { border-color: rgba(255,224,138,.35); color: #fff4d1; }
+.success { border-color: rgba(126,232,165,.35); color: #e9fff1; }
+.info { border-color: rgba(154,201,255,.35); color: #e9f3ff; }
+
+/* Badges */
+.badge, .tag, .label {
+  display: inline-block;
+  padding: .2rem .5rem;
+  border-radius: 999px;
+  border: 1px solid rgba(159,242,201,.35);
+  color: var(--accent);
+  background: rgba(159,242,201,.08);
+  font-size: var(--size-1);
+  letter-spacing: .03em;
+}
+
+/* ------------------------------ */
+/* 10) Footer
+/* ------------------------------ */
+footer, #footer {
+  background: var(--bg-1);
+  color: var(--ink-1);
+  border-top: 1px solid var(--divider);
+}
+
+/* ------------------------------ */
+/* 11) Search & Filters
+/* ------------------------------ */
+.search, .filters, .toolbar {
+  display: flex;
+  gap: var(--gap-2);
+  flex-wrap: wrap;
+  align-items: center;
+  background: var(--bg-1);
+  padding: .8rem;
+  border: 1px solid var(--divider);
+  border-radius: var(--radius-md);
+}
+
+/* ------------------------------ */
+/* 12) Modals / Overlays
+/* ------------------------------ */
+.modal, .dialog, .overlay {
+  background: var(--bg-1) !important;
+  color: var(--ink-0) !important;
+  border: 1px solid var(--divider) !important;
+  border-radius: var(--radius-lg) !important;
+  box-shadow: var(--shadow-2) !important;
+}
+
+/* ------------------------------ */
+/* 13) Tiny Glitch Accents (tasteful)
+/* ------------------------------ */
+@keyframes crt-flicker {
+  0%, 100% { opacity: 1; }
+  98% { opacity: .98; }
+  99% { opacity: 1; }
+}
+@keyframes scanline {
+  0% { background-position: 0 -2px; }
+  100% { background-position: 0 2px; }
+}
+
+/* Headings get a subtle phosphor feel */
+h1, h2, .title .text, .page-title {
+  text-shadow: 0 0 8px rgba(159,242,201,.12);
+  animation: crt-flicker 5s infinite steps(1000) both;
+}
+
+/* Ultra-subtle scanlines on accent areas */
+.scoreboard .score, .nav .active > a, .badge {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    rgba(159,242,201,.06) 0px,
+    rgba(159,242,201,.06) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+  background-size: 100% 2px;
+  animation: scanline 8s linear infinite;
+}
+
+/* ------------------------------ */
+/* 14) Draft Room / Player Rows (generic)
+/* ------------------------------ */
+.player, .player-row, .mfl-player {
+  border-bottom: 1px solid var(--divider);
+  padding: .55rem .6rem;
+}
+.player:hover, .player-row:hover {
+  background: rgba(159,242,201,.05);
+}
+
+.player .name, .player .pos, .player .team {
+  font-size: var(--size-2);
+  color: var(--ink-0);
+}
+.player .pos { color: var(--info); opacity: .9; }
+.player .bye, .player .inj { color: var(--warning); }
+
+/* ------------------------------ */
+/* 15) Form Helpers & Utilities
+/* ------------------------------ */
+.text-muted { color: var(--ink-1) !important; }
+.small, small { font-size: var(--size-1); color: var(--ink-1); }
+.mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; }
+
+/* Optional accent outlines for key blocks */
+.outline-accent {
+  border: 1px dashed rgba(159,242,201,.35) !important;
+  border-radius: var(--radius-md);
+  background: rgba(159,242,201,.03);
+}
+
+/* ------------------------------ */
+/* 16) Link States & Focus (Accessibility)
+/* ------------------------------ */
+a:focus, button:focus, input:focus, select:focus, textarea:focus, .focusable:focus {
+  outline: none !important;
+  box-shadow: var(--ring) !important;
+  border-color: rgba(159,242,201,.5) !important;
+}
+
+/* ------------------------------ */
+/* 17) Light Variant (optional toggle if MFL exposes .theme-light on body)
+/* ------------------------------ */
+body.theme-light {
+  --bg-0: #e8ecee;
+  --bg-1: #f7f9fa;
+  --bg-2: #ffffff;
+  --ink-0: #0f1519;
+  --ink-1: #2d3a43;
+  --muted: #5c6a74;
+  --divider: #d7dde3;
+  --accent: #14b87b;         /* firmer green in light */
+  --accent-strong: #109b68;
+  --accent-ink: #062218;
+  --shadow-1: 0 6px 20px rgba(10,20,30,.08), inset 0 0 0 1px rgba(0,0,0,.02);
+  --shadow-2: 0 8px 30px rgba(10,20,30,.10), inset 0 0 0 1px rgba(0,0,0,.03);
+}
+
+body.theme-light header, body.theme-light .navbar {
+  background: linear-gradient(180deg, rgba(0,0,0,.02), rgba(0,0,0,.0)) , var(--bg-1) !important;
+}
+
+/* ------------------------------ */
+/* 18) Optional: Team Color Neutralizer (keeps Severance vibe)
+/* Comment out if you want team colors to shine through.
+/* ------------------------------ */
+.team-color, .owner-color, .franchise-color {
+  filter: grayscale(1) saturate(.8);
+  opacity: .95;
+}
+
+/* ------------------------------ */
+/* 19) Images & Avatars */
+/* ------------------------------ */
+img, .avatar, .logo {
+  border-radius: .6rem;
+  background: #0a0d0f;
+  border: 1px solid var(--divider);
+}
+
+/* ------------------------------ */
+/* 20) Tooltips (common libs) */
+/* ------------------------------ */
+.tooltip, [data-tooltip]::after {
+  background: var(--bg-2);
+  color: var(--ink-0);
+  border: 1px solid var(--divider);
+  border-radius: .5rem;
+}
+
+/* ------------------------------ */
+/* 21) Compact Spacing Mode (if MFL adds .compact on body) */
+/* ------------------------------ */
+body.compact {
+  --gap-4: 1rem;
+  --gap-5: 1.4rem;
+  --size-3: 15px;
+}
+
