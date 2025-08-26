@@ -496,4 +496,74 @@ body.compact {
   --gap-5: 1.4rem;
   --size-3: 15px;
 }
+/* -- Improve Link Spacing & Clarity -- */
+#header a, .navbar a, .mfl-menu-bar a {
+  padding: 0.6rem 1rem;
+  border-radius: var(--radius-md);
+  margin-right: var(--gap-2);
+}
+#header a:hover,
+.navbar a:hover,
+.mfl-menu-bar a:hover {
+  background: rgba(159,242,201,0.1);
+}
+
+/* -- League Tab Clarity -- */
+.leagueTabs a {
+  margin: 0 var(--gap-1);
+  padding: .4rem .8rem;
+  background: rgba(159,242,201,0.05);
+  border-radius: var(--radius-md);
+  font-size: var(--size-2);
+}
+.leagueTabs a.active {
+  background: var(--accent);
+  color: var(--accent-ink);
+  box-shadow: 0 0 4px rgba(159,242,201,0.4);
+}
+
+/* -- Table → Enhanced Readability -- */
+.leagueStandings, table {
+  border: none;
+  border-radius: var(--radius-md);
+}
+.leagueStandings tbody tr {
+  border-bottom: 1px solid var(--divider);
+}
+.leagueStandings tbody tr:hover {
+  background: rgba(159,242,201,0.08);
+}
+.leagueStandings tbody tr:nth-child(odd) {
+  background: rgba(159,242,201,0.02);
+}
+.leagueStandings thead th {
+  padding: .8rem 1rem;
+  background: var(--bg-2);
+}
+
+/* -- Section & Widget Spacing -- */
+.content > :not(.divider) {
+  margin-bottom: var(--gap-4);
+}
+.mfl-widget, .module {
+  padding: 1.2rem 1.4rem !important;
+}
+
+/* -- Chat & Activity Lists -- */
+.leagueChat, .franchiseList {
+  background: var(--bg-2) !important;
+  padding: var(--gap-3);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--gap-4);
+}
+
+/* -- Fine Tune Text Size Hierarchy -- */
+h1, h2, .title {
+  font-size: var(--size-5);
+}
+h2, .title-sub {
+  font-size: var(--size-4);
+  color: var(--ink-1);
+}
+
 
