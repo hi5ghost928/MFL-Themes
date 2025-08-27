@@ -69,7 +69,7 @@ a:hover {
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-1);
   border: 1px solid var(--divider);
-  padding: 1rem 1.4rem;
+  padding: .5rem .6rem;
   margin-bottom: 1.5rem;
 }
 
@@ -86,7 +86,7 @@ header, .navbar, #topnav {
   background: var(--bg-1) !important;
   border-bottom: 1px solid var(--divider);
   box-shadow: var(--shadow-1);
-  padding: .6rem 1rem;
+  padding: .5rem .6rem;
 }
 header a, .navbar a, #topnav a {
   color: var(--ink-0) !important;
@@ -203,7 +203,7 @@ tbody tr:hover {
    9) Alerts & Badges
    ------------------------------ */
 .alert, .notice, .warning, .success, .info {
-  padding: .75rem .8rem;
+  padding: .5rem .6rem;
   border-radius: var(--radius-md);
   margin: .8rem 0;
 }
@@ -215,7 +215,7 @@ tbody tr:hover {
 .badge, .tag {
   display: inline-block;
   padding: .2rem .6rem;
-  border-radius: 999px;
+  border-radius: 500px;
   background: var(--accent);
   color: var(--accent-ink);
   font-size: var(--size-2);
@@ -232,6 +232,7 @@ footer, #footer {
   padding: .8rem;
   text-align: center;
 }
+
 
 
 
