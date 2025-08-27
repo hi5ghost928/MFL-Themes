@@ -1,0 +1,242 @@
+/* ===================================================
+   MyFantasyLeague – Severance Theme (Light Variant)
+   Author: You + ChatGPT
+   Aesthetic: Clinical light with green accents
+   =================================================== */
+
+/* ------------------------------
+   1) Root Variables
+   ------------------------------ */
+:root {
+  --bg-0: #f7f9fa;          /* page background */
+  --bg-1: #ffffff;          /* card/module background */
+  --bg-2: #f1f3f5;          /* subtle alt background */
+  --ink-0: #111418;         /* primary text */
+  --ink-1: #4a545c;         /* secondary text */
+  --muted: #7b8894;         /* muted text */
+  --divider: #d7dde3;       /* border color */
+  --accent: #14b87b;        /* green accent */
+  --accent-strong: #109b68; /* darker green */
+  --accent-ink: #ffffff;    /* text on accent */
+  --danger: #d94848;
+  --success: #2e9f65;
+  --warning: #e0a800;
+  --info: #2980b9;
+
+  --radius-sm: .4rem;
+  --radius-md: .4rem;
+  --radius-lg: 1.2rem;
+
+  --shadow-1: 0 4px 12px rgba(0,0,0,.08);
+  --shadow-2: 0 6px 20px rgba(0,0,0,.12);
+
+  --font-ui: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial;
+
+  --size-1: 13px;
+  --size-2: 14px;
+  --size-3: 16px;
+  --size-4: 18px;
+  --size-5: 22px;
+}
+
+/* ------------------------------
+   2) Base & Typography
+   ------------------------------ */
+body, html {
+  background: var(--bg-0) !important;
+  color: var(--ink-0) !important;
+  font-family: var(--font-ui);
+  font-size: var(--size-3);
+  line-height: 1.55;
+  margin: 0;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 500;
+  transition: all .2s ease;
+}
+a:hover {
+  color: var(--accent-strong);
+  text-decoration: underline;
+}
+
+/* ------------------------------
+   3) Containers & Cards
+   ------------------------------ */
+#siteContent, #body_container, #home, .content, .module, .mfl-widget, .mfl-card {
+  background: var(--bg-1) !important;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-1);
+  border: 1px solid var(--divider);
+  padding: .2rem .2rem;
+  margin-bottom: 1.5rem;
+}
+
+h1, h2, h3, .title {
+  color: var(--ink-0);
+  font-weight: 700;
+  margin-bottom: .6rem;
+}
+
+/* ------------------------------
+   4) Navigation / Header
+   ------------------------------ */
+header, .navbar, #topnav {
+  background: var(--bg-1) !important;
+  border-bottom: 1px solid var(--divider);
+  box-shadow: var(--shadow-1);
+  padding: .2rem .2rem;
+}
+header a, .navbar a, #topnav a {
+  color: var(--ink-0) !important;
+  margin: 0 .6rem;
+  font-weight: 600;
+  transition: all .2s ease;
+}
+header a:hover, .navbar a:hover {
+  color: var(--accent) !important;
+}
+.nav .active > a {
+  background: var(--accent);
+  color: var(--accent-ink) !important;
+  padding: .2rem .2rem;
+  border-radius: 500px;
+}
+
+/* ------------------------------
+   5) Buttons
+   ------------------------------ */
+button, .btn, input[type="submit"], input[type="button"], .mfl-button {
+  background: var(--accent);
+  color: var(--accent-ink);
+  border: none;
+  border-radius: var(--radius-md);
+  padding: .2rem .2rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background .2s ease, box-shadow .2s ease;
+}
+button:hover, .btn:hover, input[type="submit"]:hover {
+  background: var(--accent-strong);
+  box-shadow: var(--shadow-2);
+}
+button.secondary, .btn.secondary {
+  background: var(--bg-1);
+  color: var(--ink-0);
+  border: 1px solid var(--divider);
+}
+button.secondary:hover {
+  border-color: var(--accent);
+  color: var(--accent-strong);
+}
+
+/* ------------------------------
+   6) Forms & Inputs
+   ------------------------------ */
+input, select, textarea {
+  background: var(--bg-1);
+  border: 1px solid var(--divider);
+  border-radius: var(--radius-sm);
+  padding: .2rem .2rem;
+  color: var(--ink-0);
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+input:focus, select:focus, textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(20,184,123,.25);
+  outline: none;
+}
+::placeholder {
+  color: var(--muted);
+}
+
+/* ------------------------------
+   7) Tables
+   ------------------------------ */
+table, .table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+thead th {
+  background: var(--bg-2);
+  color: var(--ink-0);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: var(--size-2);
+  letter-spacing: .04em;
+  padding: .2rem;
+}
+tbody td {
+  padding: .2rem .2rem;
+  border-bottom: 1px solid var(--divider);
+  font-size: var(--size-2); /* smaller for clinical feel */
+}
+tbody tr:nth-child(even) {
+  background: var(--bg-2);
+}
+tbody tr:hover {
+  background: rgba(20,184,123,.08);
+}
+
+/* ------------------------------
+   8) Scoreboards / Matchups
+   ------------------------------ */
+.matchup, .scoreboard, .mfl-matchup {
+  background: var(--bg-1);
+  border: 1px solid var(--divider);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-1);
+  margin-bottom: 1.2rem;
+}
+.matchup .team-name {
+  font-size: var(--size-4);
+  font-weight: 600;
+}
+.matchup .score {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--accent);
+}
+
+/* ------------------------------
+   9) Alerts & Badges
+   ------------------------------ */
+.alert, .notice, .warning, .success, .info {
+  padding: .2rem .2rem;
+  border-radius: var(--radius-md);
+  margin: .8rem 0;
+}
+.alert { background: #fff5f5; color: var(--danger); }
+.warning { background: #fffbea; color: var(--warning); }
+.success { background: #f0fff4; color: var(--success); }
+.info { background: #f0f8ff; color: var(--info); }
+
+.badge, .tag {
+  display: inline-block;
+  padding: .2rem .2rem;
+  border-radius: 500px;
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-size: var(--size-2);
+  font-weight: 600;
+  transition: all .2s ease;
+  cursor: pointer;
+}
+.badge:hover, .tag:hover {
+  background: var(--accent-strong);
+}
+
+/* ------------------------------
+   10) Footer
+   ------------------------------ */
+footer, #footer {
+  background: var(--bg-1);
+  color: var(--ink-1);
+  border-top: 1px solid var(--divider);
+  padding: .2rem;
+  text-align: center;
+}
